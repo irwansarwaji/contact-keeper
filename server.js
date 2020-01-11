@@ -1,6 +1,13 @@
 const express = require('express');
-
+const connectDB = require('./conifg/db');
 const app = express();
+
+//Connect Database
+connectDB();
+
+//init Middleware
+//By doing this you can now accept body. Normally you have to use a third party, but now its included to exprexs.
+app.use(express.json({ extended: false}));
 
 //add a route
 app.get('/', (req, res) => res.json({msg: 'welcome to the contact keeper API.'}));
